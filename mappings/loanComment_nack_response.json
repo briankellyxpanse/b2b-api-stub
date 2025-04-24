@@ -1,0 +1,25 @@
+{
+  "id": "1100AEC0-EC5A-429F-B035-5AF82C6D5E3D",
+  "priority": 100,
+  "request": {
+    "method": "POST",
+    "urlPattern": "/api/orders/postevent((\\?.*)|$)",
+    "bodyPatterns": [
+      {
+        "matchesXPath": "/m:MESSAGE/m:DEAL_SETS/m:DEAL_SET/m:DEALS/m:DEAL/m:LOANS/m:LOAN/m:LOAN_COMMENTS/m:LOAN_COMMENT/m:LoanCommentText[text()=\"xpanse-stub:NACK\"]",
+        "xPathNamespaces": {
+          "vtp": "http://www.archwellsolutions.com/schema",
+          "m": "http://www.mismo.org/residential/2009/schemas"
+        }
+      }
+    ]
+  },
+  "response": {
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><MESSAGE xmlns=\"http://www.mismo.org/residential/2009/schemas\"  xmlns:xlink=\"http://www.w3.org/1999/xlink\"  xmlns:vtp=\"http://www.archwellsolutions.com/schema\" MISMOReferenceModelIdentifier=\"3.4\" ><ABOUT_VERSIONS><ABOUT_VERSION SequenceNumber=\"1\"><CreatedDatetime DisplayTimeZoneText = \"UTC-5\">2021-06-25T12:46:44.398Z</CreatedDatetime><DataVersionIdentifier IdentifierOwnerURI=\"urn:lender.com:2013:ApplicationID\">Lakewood</DataVersionIdentifier><DataVersionName>SourceSystem</DataVersionName></ABOUT_VERSION><ABOUT_VERSION SequenceNumber=\"2\"><CreatedDatetime DisplayTimeZoneText = \"UTC-5\">2021-06-25T12:46:44.398Z</CreatedDatetime><DataVersionIdentifier IdentifierOwnerURI=\"urn:lender.com:2013:EnvironmentID\">TEST</DataVersionIdentifier><DataVersionName>SourceEnvironment</DataVersionName></ABOUT_VERSION></ABOUT_VERSIONS><DEAL_SETS><DEAL_SET><DEALS><DEAL><LOANS><LOAN><EXTENSION><OTHER><vtp:Acknowledgement><vtp:Received>2021-06-25T12:46:44.398Z</vtp:Received><vtp:Validated>true</vtp:Validated></vtp:Acknowledgement><vtp:Transaction_Information><vtp:CreatedBy>100 </vtp:CreatedBy><vtp:TransactionID>N/A</vtp:TransactionID><vtp:UserName>System</vtp:UserName></vtp:Transaction_Information></OTHER></EXTENSION></LOAN></LOANS><SERVICES><SERVICE><STATUSES><STATUS><StatusConditionDescription>FatalException</StatusConditionDescription><StatusDescription>This NACK was forced by a simulated failure</StatusDescription><StatusName>NACK</StatusName></STATUS></STATUSES></SERVICE></SERVICES></DEAL></DEALS></DEAL_SET></DEAL_SETS></MESSAGE>",
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "status": 200
+  }
+}
+

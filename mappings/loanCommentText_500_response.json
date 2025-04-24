@@ -1,0 +1,24 @@
+{
+  "id": "2D5BDB6B-0A21-4446-920A-729973AC1FA0",
+  "priority": 100,
+  "request": {
+    "method": "POST",
+    "urlPattern": "/api/orders/postevent((\\?.*)|$)",
+    "bodyPatterns": [
+      {
+        "matchesXPath": "/m:MESSAGE/m:DEAL_SETS/m:DEAL_SET/m:DEALS/m:DEAL/m:LOANS/m:LOAN/m:LOAN_COMMENTS/m:LOAN_COMMENT/m:LoanCommentText[text()=\"xpanse-stub:BOOM\"]",
+        "xPathNamespaces": {
+          "vtp": "http://www.archwellsolutions.com/schema",
+          "m": "http://www.mismo.org/residential/2009/schemas"
+        }
+      }
+    ]
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "status": 500
+  }
+}
+

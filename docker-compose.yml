@@ -1,0 +1,11 @@
+services:
+  vendor-stub:
+    #image: fec43f4d2dbea499c7533ecf2adddf652bc15b982963eba6174ba6881be1c6ed
+    image: rodolpheche/wiremock:main
+    container_name: vendor-stub
+    ports:
+      - 8080:8080
+    volumes:
+      - ./mappings:/home/wiremock/mappings
+      #- ./container:/container
+    

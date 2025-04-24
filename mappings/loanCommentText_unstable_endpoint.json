@@ -1,0 +1,44 @@
+{
+  "mappings": [
+    {
+      "scenarioName": "Unstable endpoint",
+      "requiredScenarioState": "Started",
+      "newScenarioState": "Stable for one request",
+      "request": {
+        "method": "POST",
+        "urlPattern": "/api/orders/postevent((\\?.*)|$)",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "/m:MESSAGE/m:DEAL_SETS/m:DEAL_SET/m:DEALS/m:DEAL/m:LOANS/m:LOAN/m:LOAN_COMMENTS/m:LOAN_COMMENT/m:LoanCommentText[text()=\"xpanse-stub:UNSTABLE\"]",
+            "xPathNamespaces": {
+              "vtp": "http://www.archwellsolutions.com/schema",
+              "m": "http://www.mismo.org/residential/2009/schemas"
+            }
+          }
+        ]
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "application/xml"
+        },
+        "status": 500
+      }
+    },
+    {
+      "scenarioName": "Unstable endpoint",
+      "requiredScenarioState": "Stable for one request",
+      "newScenarioState": "Started",
+      "request": {
+        "method": "POST",
+        "urlPattern": "/api/orders/postevent((\\?.*)|$)"
+      },
+      "response": {
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<MESSAGE xmlns=\"http://www.mismo.org/residential/2009/schemas\"  xmlns:vtp=\"http://www.archwellsolutions.com/schema\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"  MISMOReferenceModelIdentifier=\"3.4\" >\n    <ABOUT_VERSIONS>\n        <ABOUT_VERSION SequenceNumber=\"1\">\n            <CreatedDatetime DisplayTimeZoneText = \"UTC-5\"> 2016-03-14T09:07:00-05:00</CreatedDatetime>\n            <DataVersionIdentifier IdentifierOwnerURI=\"urn:lender.com:2013:ApplicationID\">MAX</DataVersionIdentifier>\n            <DataVersionName>SourceSystem</DataVersionName>\n        </ABOUT_VERSION>\n        <ABOUT_VERSION SequenceNumber=\"2\">\n            <CreatedDatetime DisplayTimeZoneText = \"UTC-5\"> 2016-03-14T09:07:00-05:00</CreatedDatetime>\n            <DataVersionIdentifier IdentifierOwnerURI=\"urn:lender.com:2013:EnvironmentID\">DEV1</DataVersionIdentifier>\n            <DataVersionName>SourceEnvironment</DataVersionName>\n        </ABOUT_VERSION>\n    </ABOUT_VERSIONS>\n    <DEAL_SETS>\n        <DEAL_SET>\n            <DEALS>\n                <DEAL>\n                    <LOANS>\n                        <LOAN>\n                            <EXTENSION>\n                                <OTHER>\n                                    <vtp:Acknowledgement>\n                                        <vtp:Received>2016-03-14T09:07:00-05:00</vtp:Received>\n                                        <vtp:Validated>true</vtp:Validated>\n                                    </vtp:Acknowledgement>\n                                    <vtp:Transaction_Information>\n                                        <vtp:CreatedBy>test-stub</vtp:CreatedBy>\n                                        <vtp:TransactionID>123-123</vtp:TransactionID>\n                                        <vtp:UserName>login.qa</vtp:UserName>\n                                    </vtp:Transaction_Information>\n                                </OTHER>\n                            </EXTENSION>\n                        </LOAN>\n                    </LOANS>\n                    <SERVICES>\n                        <SERVICE>\n                            <STATUSES>\n                                <STATUS>\n                                    <StatusDescription>Acknowledgement</StatusDescription>\n                                    <StatusName>ACK</StatusName>\n                                </STATUS>\n                            </STATUSES>\n                        </SERVICE>\n                    </SERVICES>\n                </DEAL>\n            </DEALS>\n        </DEAL_SET>\n    </DEAL_SETS>\n</MESSAGE>\n",
+        "headers": {
+          "Content-Type": "application/xml"
+        },
+        "status": 200
+      }
+    }
+  ]
+}
